@@ -28,6 +28,36 @@
         android:layout_marginTop="25dp"
         android:hint="@string/transaction_date" />
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/transaction_date"
+        android:id="@+id/transaction_currency_type_rg"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"        >
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/transaction_currency_local"
+            android:text="Local"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/transaction_currency_home"
+            android:text="GBP"/>
+
+    </RadioGroup>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/transaction_currency_type_rg"
+        android:id="@+id/transaction_value"
+        android:layout_marginTop="25dp"
+        android:hint="Value"
+        android:inputType="number"/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,8 +65,9 @@
         android:text="@string/transaction_add_btn_str"
         android:id="@+id/transaction_add"
         android:layout_marginTop="28dp"
-        android:layout_below="@+id/transaction_date"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/transaction_value"
+        android:onClick="commitTransaction"/>
 
 
 </RelativeLayout>

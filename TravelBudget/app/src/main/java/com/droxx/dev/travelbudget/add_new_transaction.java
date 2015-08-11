@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -56,6 +58,9 @@ public class add_new_transaction extends AppCompatActivity {
             }
         });
 
+        RadioGroup currencyRg = (RadioGroup)findViewById(R.id.transaction_currency_type_rg);
+
+        currencyRg.check(R.id.transaction_currency_local);
 
     }
 
@@ -86,4 +91,10 @@ public class add_new_transaction extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void commitTransaction(View view)
+    {
+
+    }
+
 }
