@@ -1,24 +1,31 @@
 package com.droxx.dev.travelbudget;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
-public class MainActivity extends AppCompatActivity {
+public class add_new_transaction extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add_new_transaction);
+
+        AutoCompleteTextView textView = (AutoCompleteTextView)findViewById(R.id.transaction_country);
+        String[] countries = getResources().getStringArray(R.array.countries_array);
+
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
+        textView.setAdapter(adapter);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_activity_add_new_transaction, menu);
         return true;
     }
 
@@ -35,11 +42,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void addNewTransaction(View view){
-        Intent intent = new Intent(this, add_new_transaction.class);
-
-        startActivity(intent);
     }
 }
