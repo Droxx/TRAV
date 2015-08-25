@@ -1,6 +1,7 @@
 package com.droxx.dev.travelbudget;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addNewTransaction(View view){
-        Intent intent = new Intent(this, add_new_transaction.class);
+        Intent intent = new Intent(this, AddNewTransaction.class);
 
         startActivity(intent);
     }

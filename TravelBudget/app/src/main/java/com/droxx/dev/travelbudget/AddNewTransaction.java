@@ -1,6 +1,8 @@
 package com.droxx.dev.travelbudget;
 
 import android.app.DatePickerDialog;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,9 +19,17 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class add_new_transaction extends AppCompatActivity {
+public class AddNewTransaction extends AppCompatActivity {
 
     EditText dateText;
+    EditText countryText;
+    EditText categoryText;
+    EditText noteText;
+    RadioGroup currencyGroup;
+    RadioButton localButton;
+    RadioButton homeButton;
+    EditText valueText;
+
     Calendar myCalendar;
 
     @Override
@@ -48,11 +58,19 @@ public class add_new_transaction extends AppCompatActivity {
         };
 
         dateText = (EditText)findViewById(R.id.transaction_date);
+        countryText = (EditText)findViewById(R.id.transaction_country);
+        categoryText = (EditText)findViewById(R.id.transaction_category);
+        noteText = (EditText)findViewById(R.id.transaction_note);
+        currencyGroup = (RadioGroup)findViewById(R.id.transaction_currency_type_rg);
+        localButton = (RadioButton)findViewById(R.id.transaction_currency_local);
+        homeButton = (RadioButton)findViewById(R.id.transaction_currency_home);
+        valueText = (EditText)findViewById(R.id.transaction_value);
+
 
         dateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(add_new_transaction.this, date, myCalendar.get(Calendar.YEAR),
+                new DatePickerDialog(AddNewTransaction.this, date, myCalendar.get(Calendar.YEAR),
                         myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -94,7 +112,21 @@ public class add_new_transaction extends AppCompatActivity {
 
     public void commitTransaction(View view)
     {
+        TransactionDatabaseHelper tDbHelper = new TransactionDatabaseHelper(getApplicationContext());
+        SQLiteDatabase db = tDbHelper.getWritableDatabase();
 
+        ContentValues values = new ContentValues();
+        values.put(TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_DATE_ID, dateText.getText().toString());
+        values.put(TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_COUNTRY_ID, countryText.getText().toString());
+        values.put(TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_CATEGORY_ID, categoryText.getText().toString());
+        values.put(TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_NOTE_ID, noteText.getText().toString());
+        values.put(TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_LOCAL_ID, localButton.isChecked() ? 1 : 0);
+        values.put(TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_VALUE_ID, valueText.getText().toString());
+
+        long newRowId;
+        newRowId = db.insert(TransactionDatabaseHelper.TransactionEntry.TABLE_NAME, null, values);
+
+        finishActivity(0);
     }
 
 }
