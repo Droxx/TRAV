@@ -6,7 +6,7 @@
 
     <!--Main Menu Strings-->
     <string name="main_add_new_btn_str">Add New Transaction</string>
-    <string name="main_view_history_button_str">View Transactions</string>
+    <string name="main_export_history_button_str">Export Transactions</string>
 
     <!--Add new transaction strings-->
     <string name="title_activity_activity_add_new_transaction">Add New Transaction</string>
@@ -256,6 +256,6 @@
         <item>Zimbabwe</item>
     </string-array>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_view_transactions">ViewTransactions</string>
+    <!--View transactions strings-->
+    <string name="title_activity_view_transactions">View Transactions</string>
 </resources>

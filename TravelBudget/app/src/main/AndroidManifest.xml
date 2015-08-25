@@ -24,10 +24,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.droxx.dev.travelbudget.MainActivity" />
         </activity>
-        <activity
-            android:name=".ViewTransactions"
-            android:label="@string/title_activity_view_transactions" >
-        </activity>
     </application>
 
 </manifest>

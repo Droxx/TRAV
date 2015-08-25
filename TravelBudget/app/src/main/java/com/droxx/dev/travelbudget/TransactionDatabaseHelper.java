@@ -34,16 +34,14 @@ public final class TransactionDatabaseHelper extends SQLiteOpenHelper {
                         TransactionEntry._ID + INTEGER_TYPE + PRIMARY_KEY_PROPERTY + AUTOINCREMENT_PROPERTY + NOT_NULL_PROPERTY + COMMA_SEP +
                         TransactionEntry.COLUMN_NAME_DATE_ID + TEXT_TYPE + COMMA_SEP +
                         TransactionEntry.COLUMN_NAME_COUNTRY_ID + TEXT_TYPE + COMMA_SEP +
-                        TransactionEntry.COLUMN_NAME_CATEGORY_ID + TEXT_TYPE + COMMA_SEP +
                         TransactionEntry.COLUMN_NAME_NOTE_ID + TEXT_TYPE + COMMA_SEP +
+                        TransactionEntry.COLUMN_NAME_CATEGORY_ID + TEXT_TYPE + COMMA_SEP +
                         TransactionEntry.COLUMN_NAME_LOCAL_ID + INTEGER_TYPE + COMMA_SEP +
                         TransactionEntry.COLUMN_NAME_VALUE_ID + REAL_TYPE +
                         " )";
 
         private static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXISTS " + TransactionEntry.TABLE_NAME;
-
-
     }
 
     // If you change the database schema, you must increment the database version.

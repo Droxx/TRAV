@@ -1,7 +1,9 @@
 package com.droxx.dev.travelbudget;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,7 +47,39 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void viewTransactions(View view)    {
+    public void exportTransactions(View view)    {
+        TransactionDatabaseHelper tDbHelper = new TransactionDatabaseHelper(getApplicationContext());
+        SQLiteDatabase db = tDbHelper.getReadableDatabase();
+
+        String[] projectsion = {
+                TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_DATE_ID   ,
+                TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_COUNTRY_ID,
+                TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_NOTE_ID,
+                TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_CATEGORY_ID,
+                TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_LOCAL_ID,
+                TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_VALUE_ID,
+        };
+
+        String sortOrder =
+                TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_DATE_ID + " DESC";
+
+        Cursor c = db.query(
+                TransactionDatabaseHelper.TransactionEntry.TABLE_NAME,
+                projectsion, null, null, null, null, sortOrder);
+
+
+        if(c.getCount() > 0) {
+            c.moveToFirst();
+
+            for(Integer i = 0; i < c.getCount(); i++)
+            {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                builder.setMessage(c.getString(2)).setTitle("Entry " + i);
+
+                AlertDialog dialog = builder.create();
+            }
+        }
 
     }
 

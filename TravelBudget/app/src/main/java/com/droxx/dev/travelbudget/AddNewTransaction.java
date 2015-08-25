@@ -118,8 +118,8 @@ public class AddNewTransaction extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put(TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_DATE_ID, dateText.getText().toString());
         values.put(TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_COUNTRY_ID, countryText.getText().toString());
-        values.put(TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_CATEGORY_ID, categoryText.getText().toString());
         values.put(TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_NOTE_ID, noteText.getText().toString());
+        values.put(TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_CATEGORY_ID, categoryText.getText().toString());
         values.put(TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_LOCAL_ID, localButton.isChecked() ? 1 : 0);
         values.put(TransactionDatabaseHelper.TransactionEntry.COLUMN_NAME_VALUE_ID, valueText.getText().toString());
 

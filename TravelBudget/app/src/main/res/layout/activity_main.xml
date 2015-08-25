@@ -24,11 +24,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/main_view_history_button_str"
-        android:id="@+id/main_view_history_button"
+        android:text="@string/main_export_history_button_str"
+        android:id="@+id/main_export_history_button"
         android:layout_marginTop="28dp"
         android:layout_below="@+id/main_add_new_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="exportTransactions"/>
 
 
 </RelativeLayout>
