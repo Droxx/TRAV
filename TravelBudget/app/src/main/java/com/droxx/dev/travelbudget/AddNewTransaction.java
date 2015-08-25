@@ -126,7 +126,7 @@ public class AddNewTransaction extends AppCompatActivity {
         long newRowId;
         newRowId = db.insert(TransactionDatabaseHelper.TransactionEntry.TABLE_NAME, null, values);
 
-        finishActivity(0);
+        finish();
     }
 
 }

@@ -13,7 +13,6 @@ public final class TransactionDatabaseHelper extends SQLiteOpenHelper {
 
     public abstract class TransactionEntry implements BaseColumns {
         public static final String TABLE_NAME = "entry";
-        public static final String COLUMN_NAME_ENTRY_ID = "entryid";
         public static final String COLUMN_NAME_DATE_ID = "date";
         public static final String COLUMN_NAME_COUNTRY_ID = "contry";
         public static final String COLUMN_NAME_CATEGORY_ID = "category";
@@ -23,20 +22,22 @@ public final class TransactionDatabaseHelper extends SQLiteOpenHelper {
 
         private static final String TEXT_TYPE = " TEXT";
         private static final String INTEGER_TYPE = " INTEGER";
-        private static final String AUTOINCREMENT_PROPERTY = " AUTOINCREMENT";
         private static final String REAL_TYPE = " REAL";
         private static final String COMMA_SEP = ",";
 
+        private static final String AUTOINCREMENT_PROPERTY = " AUTOINCREMENT";
+        private static final String PRIMARY_KEY_PROPERTY = " PRIMARY KEY";
+        private static final String NOT_NULL_PROPERTY = " NOT NULL";
+
         private static final String SQL_CREATE_ENTRIES =
                 "CREATE TABLE " + TransactionEntry.TABLE_NAME + " (" +
-                        TransactionEntry._ID + " INTEGER PRIMARY KEY," +
-                        TransactionEntry.COLUMN_NAME_ENTRY_ID + TEXT_TYPE + AUTOINCREMENT_PROPERTY + COMMA_SEP +
+                        TransactionEntry._ID + INTEGER_TYPE + PRIMARY_KEY_PROPERTY + AUTOINCREMENT_PROPERTY + NOT_NULL_PROPERTY + COMMA_SEP +
                         TransactionEntry.COLUMN_NAME_DATE_ID + TEXT_TYPE + COMMA_SEP +
                         TransactionEntry.COLUMN_NAME_COUNTRY_ID + TEXT_TYPE + COMMA_SEP +
                         TransactionEntry.COLUMN_NAME_CATEGORY_ID + TEXT_TYPE + COMMA_SEP +
                         TransactionEntry.COLUMN_NAME_NOTE_ID + TEXT_TYPE + COMMA_SEP +
                         TransactionEntry.COLUMN_NAME_LOCAL_ID + INTEGER_TYPE + COMMA_SEP +
-                        TransactionEntry.COLUMN_NAME_VALUE_ID + REAL_TYPE + COMMA_SEP +
+                        TransactionEntry.COLUMN_NAME_VALUE_ID + REAL_TYPE +
                         " )";
 
         private static final String SQL_DELETE_ENTRIES =
